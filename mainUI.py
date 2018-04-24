@@ -6,7 +6,7 @@
 #
 # WARNING! All changes made in this file will be lost!
 ######################################################################
-# Developer :     Ayush Bairagi
+# Developer :     Ayush Bairagi & dheeraj satokia
 # E-mail:         abairagi311@gmail.com
 # Github profile: github.com/ayush3298
 # project:
