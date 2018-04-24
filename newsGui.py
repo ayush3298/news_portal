@@ -27,12 +27,7 @@ class MainWindow(Ui_MainWindow):
     # UI init
     def __init__(self, dialog):
         Ui_MainWindow.__init__(self)
-        # try:
-        #     requests.get('https://www.google.com')
-        #     print('google')
-        # except:
-        #     self.DisplayMessagebox(title='Cant Connect',text='please check your internet connection')
-        #     exit()
+
         self.setupUi(dialog)
 
 
@@ -76,6 +71,7 @@ class MainWindow(Ui_MainWindow):
         self.followBtn.clicked.connect(self.FollowCurrent)
 
         self.btnSearch.clicked.connect(self.SearchNews)
+
 
     def SearchNews(self):
         self.InsertArticles(jsonRes=self.LoadArticlesBy(
@@ -253,10 +249,16 @@ class MainWindow(Ui_MainWindow):
         for idx in reversed(range(self.articleGLayout.rowCount())):
             self.articleGLayout.removeRow(idx)
 
+
         # Insert new articles
         for article in jsonRes['articles']:
             readmoreLabel = QtWidgets.QLabel("<a href='" + article['url']  + "'>Read more.</a>")
             readmoreLabel.linkActivated.connect(self.OpenLink)
+            font = QtGui.QFont()
+            # font.setPointSize(12)
+            font.setBold(True)
+            # font.setWeight(75)
+
             if article['author'] is not None:
                 try:
                     self.articleList.append([
@@ -266,13 +268,13 @@ class MainWindow(Ui_MainWindow):
                 except:pass
                 try:
 
-        
+                    autherr=QtWidgets.QLabel('Author: '+article['author'])
             # Create articleList, this is the list where all elements are loaded from
                     self.articleList.append([
                         #QtWidgets.QLabel('Source: ' + article['source']['name']),
-                        QtWidgets.QLabel('Author: '+article['author']),
-                        QtWidgets.QLabel('Title: '+article['title']).setFont(QFont('Arial', 20)),
-                        QtWidgets.QLabel('Published At: '+article['publishedAt']),
+                        autherr,
+                        QtWidgets.QLabel('Title: '+article['title']),
+                        QtWidgets.QLabel(str('Published At: '+article['publishedAt'])[:24]),
                         QtWidgets.QLabel(article['description']),
                         readmoreLabel,
                         QtWidgets.QLabel('-'*160),
