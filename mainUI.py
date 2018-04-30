@@ -55,6 +55,22 @@ class Ui_MainWindow(object):
         self.btnSearch.setObjectName("btnSearch")
         self.btnSearch.setText('Search')
 
+        bicon = QtGui.QIcon()
+        bicon.addPixmap(QtGui.QPixmap("back.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.Back_button = QtWidgets.QPushButton(MainWindow)
+        self.Back_button.setGeometry(QtCore.QRect(50, 10, 20, 27))
+        self.Back_button.setObjectName("Back_button")
+        self.Back_button.setIcon(bicon)
+
+
+        ficon = QtGui.QIcon()
+        ficon.addPixmap(QtGui.QPixmap("next.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.next_button = QtWidgets.QPushButton(MainWindow)
+        self.next_button.setGeometry(QtCore.QRect(80, 10, 20, 27))
+        self.next_button.setObjectName("Back_button")
+        self.next_button.setIcon(ficon)
+        # self.Back_button.setText('Search')
+
 
 
         self.followBtn.setFont(font)
@@ -109,6 +125,14 @@ class Ui_MainWindow(object):
         self.sourcelistLabel.setFont(font)
         self.sourcelistLabel.setObjectName("sourcelistLabel")
         self.horizontalLayout.addWidget(self.sourcelistLabel)
+
+        self.CountryBox = QtWidgets.QComboBox(self.centralwidget)
+        self.CountryBox.setObjectName("CountryBox")
+        self.CountryBox.setGeometry((QtCore.QRect(750, 10, 100, 27)))
+        self.CountryBox.addItem('Choose Country')
+        for k,v in self.Country_dict.items():
+            self.CountryBox.addItem(str(k))
+
         self.categoryCombobox = QtWidgets.QComboBox(self.centralwidget)
         self.categoryCombobox.setObjectName("categoryCombobox")
         self.categoryCombobox.addItem("")
@@ -181,5 +205,5 @@ class Ui_MainWindow(object):
         self.categoryCombobox.setItemText(7, _translate("MainWindow", "science-and-nature"))
         self.categoryCombobox.setItemText(8, _translate("MainWindow", "sport"))
         self.categoryCombobox.setItemText(9, _translate("MainWindow", "technology"))
-        self.label.setText(_translate("MainWindow", "Followed"))
+        # self.label.setText(_translate("MainWindow", "Followed"))
 
